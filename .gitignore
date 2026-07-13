@@ -1,0 +1,11 @@
+*.blg
+*.bbl
+foo
+*~
+*.pdf
+!NSASAG_2026.pdf
+*.gz
+*.dvi
+*.log
+*.out
+*.aux

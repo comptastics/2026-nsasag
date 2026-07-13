@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+
+\usepackage{jcd-macros}
+\usepackage[numbers,square]{natbib}
+\bluehyperref  % Dark blue hyperref
+\usemedgeometry  % Use medium geometry (3cm left/right margin, 2.54 top/bottom)
+
+\begin{document}
+
+\title{26-01 A Batched Variant of a Coupon-Collector Problem}
+
+\maketitle
+
+\section{Some minor notes on discussion}
+
+\paragraph{Responsible Parties:} Greg (primary); Lucas (Ramesh secondary)
+
+\begin{enumerate}[1.]
+\item Greg had a proposal (by email) regarding an explore-then-commit
+  policy, which iteratively estimated $p$ then inceased sample
+  size appropriately
+\item Lucas suggested doing Thompson sampling: pick a value $p$,
+  then sample according to best policy assuming $p$ is true.
+\end{enumerate}
+
+\end{document}
