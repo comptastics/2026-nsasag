@@ -15,4 +15,21 @@
 
 \paragraph{Responsible Parties:} Lucas, John
 
+\begin{enumerate}[1.]
+\item Basic model: there's a Taylor swift concert in one of some number
+  $K$ of cities.
+  %
+  The matrix $X \in \R^{n \times p}$ represents traffic at the $n$ timesteps
+  preceding the concert, which (say) has $X_{ij} \simiid \poisson(\lambda_j)$.
+  %
+  Then $\tau$ timesteps preceding the concert, the roads into the
+  arena in town $k$ start to increase, so there's an index set
+  $I_k \subset [p]$, with $|I_k| \ll p$, and on those
+  $X_{ij} \simiid \poisson(\lambda_j + \theta_j)$ for $j \ge n - \tau$.
+\item Lucas's basic idea: what about writing down some empirical Bayes
+  models for this?
+\item The proposer wants to know methods on this one, \emph{not} too fussed
+  about the theory of it.
+\end{enumerate}
+
 \end{document}

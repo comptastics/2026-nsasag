@@ -15,4 +15,38 @@
 
 \paragraph{Responsible Parties:} John (primary), Tselil/Lucas
 
+\begin{enumerate}[1.]
+\item Most agreed that modern literature was pretty rough on this one
+\item Basic idea that many of us seemed to drill down on: building a running
+  estimate of an adjacency matrix $A(t)$ could be an interesting
+  procedure.
+  %
+  Then treat the clustering at time $t$ as the result of clustering on $A(t)$.
+  %
+  A few ways to do this:
+  \begin{enumerate}[a.]
+  \item Put down a statistical model of $A(t)$.
+    %
+    For example, a Poisson process on edges, and assume that the rate
+    of the Poisson at time $t$ on edge $(i, j)$ is something like
+    $\lambda_{ij}(t) = \theta_{ij}^T \phi(t)$, where $\phi(t)$ is a feature
+    function of time.
+    %
+    Then fit this.
+    %
+    Note that this only works retrospectively (i.e., in filtering), and
+    potentially nowcasting.
+  \item A slightly less model-based way: constantly have a matrix
+    $A(t)$ that, on each observation $(i, j, t)$, re-weights edge
+    $(i ,j)$ according to some exponential (?) weighting.
+  \end{enumerate}
+\item A less model-based way: build a clustering.
+  %
+  As time goes on, keep a testing to see if the clustering satisfies a
+  particular ``good enough'' criterion.
+  %
+  Upon failure of this criterion, re-estimate the clustering based on the
+  observations since the last time the clustering worked.
+\end{enumerate}
+
 \end{document}

@@ -15,4 +15,25 @@
 
 \paragraph{Responsible Parties:} John, Tselil
 
+\begin{enumerate}[1.]
+\item Our goals on this one: for the first part of the question, try to
+  demonstrate that with random signs $S \sim \uniform(\diag(\{\pm
+  1\}^n))$ in the edge-adjacency matrix $B$, $M_V^{-1/2} S B M_E B^T S^T
+  M_V^{-1/2}$ concentrates quickly (in operator norm, say) to
+  $M_V^{-1/2} B M_E B^T M_V^{-1/2}$, so there's little randomness.
+\item Give examples of the extraordinary fragility of eigenvectors without
+  separation.
+  %
+  A trivial example of this comes from the matrices
+  \begin{align*}
+    \left[\begin{matrix} 1 - \epsilon & 0 \\ 0 & 1 + \epsilon
+      \end{matrix} \right]
+    ~~ \mbox{and} ~~
+    \left[\begin{matrix} 1 & \epsilon \\ \epsilon & 1 + 2 \epsilon
+        \end{matrix}\right].
+  \end{align*}
+  The first has $e_1$ and $e_2$ as eigenvectors, while the second has
+  very different (unique) eigenvectors.
+\end{enumerate}
+
 \end{document}
