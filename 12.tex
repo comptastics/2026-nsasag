@@ -17,4 +17,9 @@
 
 I didn't take any notes: Lucas, can you write a paragraph?
 
+\section{Lucas' contribution}
+My suggestion was to consider a single graph with multidimensional edges, i.e., each edge is a vector of dimension $\ell$ and each entry corresponds to that edge in a given layer. Equivalently we could think of this as an adjacency 3D tensor. Then the question is whether there's a principled way to collapse the tensor into the usual 2D adjacency matrix, at which point standard clustering algorithms can be applied. 
+
+There are many simple ways to do this collapsing (e.g., each edge vector could be collapsed to its norm), but Tatsu suggested learning a good collapsing function from the labeled nodes, which sounded promising but maybe he can elaborate on?
+
 \end{document}
