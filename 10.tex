@@ -32,4 +32,11 @@
   about the theory of it.
 \end{enumerate}
 
+\section{Lucas' contribution}
+It seems like an empirical Bayes approach would be a robust and efficient way to share strength across events. A few questions arise:
+\begin{itemize}
+    \item how to initialize the estimates of the hyperparameters? I also have to think more on this, since it usually depends on the specific model.
+    \item how to do the Bayesian inference for $I_k$, which is a sparse recovery problem in high dimensions, which Bayesian sampling methods don't tend to scale well to? eems like there should be a way to plug in something frequentist that scales much better, but I have to think more on this.
+\end{itemize}
+
 \end{document}
