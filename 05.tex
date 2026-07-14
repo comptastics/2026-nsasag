@@ -31,6 +31,11 @@
 \item Frankfurter's essay~\cite{Frankfurt86}
 \end{enumerate}
 
+\section{Lucas' contribution}
+My proposal was just to fit maximum likelihood via the Expectation-Maximization algorithm, which is standard for mixture of Gaussians and should be trivial to extend to include one uniform component. EM requires an initialization and a number of clusters $N$; I propose searching over a range of $N$, and for each $N$ value initializing the cluster memberships via k-means, and using within-cluster sample mean and covariances to initialize the $A_i$ and $\Sigma_i$ parameters (possibly with some small amount of ridge regularization on $\Sigma$ if a cluster size is too small). Then run EM to get a final clustering and estimate of all parameters, and plug those parameters in to the mixture likelihood to compute a log likelihood score for that $N$. Make an elbow plot of the scores across $N$ values, looking for an elbow to choose a good value of $N$ (if none is apparently in the initial $N$ range tried, consider extending its range). 
+
+The output of this algorithm allows for nice visualizations with ellipses for each cluster so the user can get a sense of which clusters lie where. If the output of HDBSCAN assigns clusters that are quite different from EM, then that could be a red flag. Alternatively, one could run this entire diagnostic separately on each individual cluster found by HDBSCAN, seeing whether EM splits any cluster into multiple clusters.
+
 \bibliography{jcd-bib}
 \bibliographystyle{abbrvnat}
 
