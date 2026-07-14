@@ -49,4 +49,7 @@
   observations since the last time the clustering worked.
 \end{enumerate}
 
+\section{Lucas' contribution}
+I basically thought that the approach suggested near the end of the problem statement of using a time-weighted adjacency matrix at each time point (to which a non-dynamic clustering algorithm is applied) was a good class of procedures, where the choice of clustering algorithm and the choice of time weighting function are up to the user and should depend on the specifics of the problem (which we are not privy to). To me this is the most natural extension of standard state-of-the-art non-model-based clustering algorithms to the dynamic setting, since it basically takes a heuristic/non-model-based approach to smoothly linking things across time, and it seems like if one does that well, I'm not sure how one could do anything much better unless there's a lot of strong modeling and/or domain knowledge about the problem (which, even if there were, we wouldn't really be able to advise on using since the NSA wouldn't share it with us).
+
 \end{document}
