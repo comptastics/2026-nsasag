@@ -9,3 +9,4 @@ foo
 *.log
 *.out
 *.aux
+!MiscellaneousReferences/Frankfurt86.pdf
