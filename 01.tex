@@ -23,4 +23,18 @@
   then sample according to best policy assuming $p$ is true.
 \end{enumerate}
 
+\section{Lucas' contribution}
+
+Thompson Sampling: initialize Unif$(0,1)$ prior on $p$, call this $\pi$ (will also call this the posterior if haven't seen any data yet). The high-level pseudocode for Thompson sampling is to, at each step $i$,
+\begin{itemize}
+    \item sample $p_i$ from the current posterior
+    \item choose $B_i$ optimally treating $p_i$ as the ground truth for $p$
+    \item update the posterior with the data observed from current batch
+\end{itemize}
+Since all observations are i.i.d. and Bernoulli, the posterior will always be in the Beta family and has a closed-form updating expression. So the only question is how to choose $B_i$ optimally treating $p_i$ as the ground truth. One simple heuristic is to simply choose $B_i\approx s/p_i$ following the second paragraph of the problem statement. This algorithm would be agnostic to exactly how the objective function is formulated, e.g., if the objective function is the suggested $\mathbb{E}[\sum_{i=1}^T(\lambda+B_i)]$, then I don't see a natural way to take $\lambda$ into account {\color{red}[if I remember correctly, Ramesh maybe had an idea on this?]}. This could be considered a downside, or could be considered an advantage since it's one fewer inputs/choices the user has to make! One choice the user could make is to choose a different prior, e.g., if $p$ is a priori very unlikely to be $>1\%$, then a prior reflecting this should help, though I recommend sticking to the Beta family for convenience and also being conservative (i.e., choosing a prior that tends to overestimate $p$), since the Bayesian updating should learn quite quickly if it starts with too large a $p_i$, but could overshoot $s$ quite badly if it starts with too small a $p_i$.
+
+Why TS? I would consider this to be in the class of bandit problems (with infinite arms, one for each integer value that $B_i$ can take), and TS often has good finite-sample (and asymptotic) performance on bandit problems. In a standard Bernoulli bandit, it achieves asymptotic optimality, not just in the rate but even in the constant {\color{red}[cite]}, and its finite sample behavior tends to be quite good. One thing that can go wrong is in finite-horizon bandits, when one nears the end of the horizon, TS doesn't take this into account and thus doesn't act greedily enough (e.g., at the very last time step, there is no reason not to act purely greedily, but TS won't do this); but that issue shouldn't really come into play here because at each step, the algorithm basically thinks it's taking the last step, so the goal should really just be to learn $p$ as fast as possible without overshooting $s$ which TS should do well.
+
+Since TS doesn't depend on $\lambda$, it would be the same approach if $\lambda$ depends on $p$ {\color{red}[though if Ramesh has a way to incorporate $\lambda$, this should straightforwardly extend to the $\lambda(p)$ case]}. Also, nothing should really change if the action at time $i$ is to choose the Poisson rate for $B_i$ rather than to choose $B_i$ directly.
+
 \end{document}
